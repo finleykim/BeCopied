@@ -15,8 +15,9 @@
 		C578D6C528197582004A4BBF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C578D6C328197582004A4BBF /* LaunchScreen.storyboard */; };
 		C578D6D22819816B004A4BBF /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C578D6D02819816B004A4BBF /* CollectionViewCell.swift */; };
 		C578D6D32819816B004A4BBF /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C578D6D12819816B004A4BBF /* CollectionViewCell.xib */; };
-		C578D6D828198342004A4BBF /* FirstCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C578D6D628198342004A4BBF /* FirstCollectionViewCell.swift */; };
-		C578D6D928198342004A4BBF /* FirstCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C578D6D728198342004A4BBF /* FirstCollectionViewCell.xib */; };
+		C59590D1281A96F6007612C1 /* CollectionSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59590D0281A96F6007612C1 /* CollectionSelectViewController.swift */; };
+		C59590D3281A972E007612C1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59590D2281A972E007612C1 /* DetailViewController.swift */; };
+		C59590D5281A9755007612C1 /* WritingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59590D4281A9755007612C1 /* WritingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,8 +31,9 @@
 		C578D6C628197582004A4BBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C578D6D02819816B004A4BBF /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		C578D6D12819816B004A4BBF /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
-		C578D6D628198342004A4BBF /* FirstCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstCollectionViewCell.swift; sourceTree = "<group>"; };
-		C578D6D728198342004A4BBF /* FirstCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstCollectionViewCell.xib; sourceTree = "<group>"; };
+		C59590D0281A96F6007612C1 /* CollectionSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionSelectViewController.swift; sourceTree = "<group>"; };
+		C59590D2281A972E007612C1 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		C59590D4281A9755007612C1 /* WritingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,8 +75,9 @@
 				C578D6C628197582004A4BBF /* Info.plist */,
 				C578D6D02819816B004A4BBF /* CollectionViewCell.swift */,
 				C578D6D12819816B004A4BBF /* CollectionViewCell.xib */,
-				C578D6D628198342004A4BBF /* FirstCollectionViewCell.swift */,
-				C578D6D728198342004A4BBF /* FirstCollectionViewCell.xib */,
+				C59590D0281A96F6007612C1 /* CollectionSelectViewController.swift */,
+				C59590D2281A972E007612C1 /* DetailViewController.swift */,
+				C59590D4281A9755007612C1 /* WritingViewController.swift */,
 			);
 			path = BeCopied;
 			sourceTree = "<group>";
@@ -139,7 +142,6 @@
 			files = (
 				C578D6C528197582004A4BBF /* LaunchScreen.storyboard in Resources */,
 				C578D6C228197582004A4BBF /* Assets.xcassets in Resources */,
-				C578D6D928198342004A4BBF /* FirstCollectionViewCell.xib in Resources */,
 				C578D6D32819816B004A4BBF /* CollectionViewCell.xib in Resources */,
 				C578D6C028197580004A4BBF /* Main.storyboard in Resources */,
 			);
@@ -153,8 +155,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C578D6D22819816B004A4BBF /* CollectionViewCell.swift in Sources */,
+				C59590D5281A9755007612C1 /* WritingViewController.swift in Sources */,
+				C59590D1281A96F6007612C1 /* CollectionSelectViewController.swift in Sources */,
 				C578D6BD28197580004A4BBF /* ViewController.swift in Sources */,
-				C578D6D828198342004A4BBF /* FirstCollectionViewCell.swift in Sources */,
+				C59590D3281A972E007612C1 /* DetailViewController.swift in Sources */,
 				C578D6B928197580004A4BBF /* AppDelegate.swift in Sources */,
 				C578D6BB28197580004A4BBF /* SceneDelegate.swift in Sources */,
 			);

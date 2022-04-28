@@ -1,20 +1,25 @@
-//
-//  ViewController.swift
-//  BeCopied
-//
-//  Created by Finley on 2022/04/27.
-//
+
 
 import UIKit
+import Alamofire
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var sinceLabel: UILabel!
+    @IBOutlet weak var CountLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
     
     
     
-}
-
+    //actionMethod
+    @IBAction func addButtonTapped(_ sender: UIButton) {
+        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "CollectionSelectViewController") as? CollectionSelectViewController else { return }
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    
+    
+    }

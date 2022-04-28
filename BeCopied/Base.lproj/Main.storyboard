@@ -42,6 +42,9 @@
                                 <rect key="frame" x="23" y="249" width="184" height="219"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="addButon"/>
+                                <connections>
+                                    <action selector="addButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xu4-CK-e4n"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doubleLine" translatesAutoresizingMaskIntoConstraints="NO" id="Lg1-au-YRu">
                                 <rect key="frame" x="10" y="169" width="394" height="40"/>
@@ -110,6 +113,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5lZ-mH-ohU"/>
+                    <connections>
+                        <outlet property="CountLabel" destination="OmE-wV-hut" id="Xoo-FQ-5C8"/>
+                        <outlet property="sinceLabel" destination="GaY-Iq-eLR" id="wnr-eL-Hqo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -134,30 +141,45 @@
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="button01"/>
+                                        <connections>
+                                            <action selector="techCrunchButtonTapped:" destination="l8b-Mq-q37" eventType="touchUpInside" id="xsW-7z-zD3"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xM0-Kv-Z3B">
                                         <rect key="frame" x="0.0" y="137" width="305" height="87"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="button02"/>
+                                        <connections>
+                                            <action selector="appleButtonTapped:" destination="l8b-Mq-q37" eventType="touchUpInside" id="qdY-fC-EcD"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YBH-QJ-1WC">
                                         <rect key="frame" x="0.0" y="274" width="305" height="87"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="button03"/>
+                                        <connections>
+                                            <action selector="wallStreetJournalTapped:" destination="l8b-Mq-q37" eventType="touchUpInside" id="yBf-8W-SQv"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RZr-VP-bs5">
                                         <rect key="frame" x="0.0" y="411" width="305" height="87"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="button04"/>
+                                        <connections>
+                                            <action selector="tapBusinessInUSButtonTapped:" destination="l8b-Mq-q37" eventType="touchUpInside" id="xgn-qi-uNW"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kFH-pT-pR2">
                                         <rect key="frame" x="0.0" y="548" width="305" height="87"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="button05"/>
+                                        <connections>
+                                            <action selector="teslaButtonTapped:" destination="l8b-Mq-q37" eventType="touchUpInside" id="RTa-w5-S5x"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -191,10 +213,9 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="agO-zS-3Xp">
                                 <rect key="frame" x="-30" y="-30" width="474" height="956"/>
                             </imageView>
-                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="v6o-2b-pgm">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="v6o-2b-pgm">
                                 <rect key="frame" x="20" y="94" width="374" height="348"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -222,16 +243,25 @@
                                 <rect key="frame" x="132" y="695" width="150" height="66"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="startButton"/>
+                                <connections>
+                                    <action selector="startButtonTapped:" destination="FcR-TB-2qd" eventType="touchUpInside" id="7dH-G6-hsg"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vn8-XL-yfV">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vn8-XL-yfV">
                                 <rect key="frame" x="132" y="235" width="150" height="66"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="finishButton"/>
+                                <connections>
+                                    <action selector="finishButtonTapped:" destination="FcR-TB-2qd" eventType="touchUpInside" id="4Nt-Mi-w7z"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="27W-Fp-q5S">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="27W-Fp-q5S">
                                 <rect key="frame" x="132" y="325" width="150" height="66"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="finishButton"/>
+                                <connections>
+                                    <action selector="selfFinishButtonTapped:" destination="FcR-TB-2qd" eventType="touchUpInside" id="GCW-Cb-Uzy"/>
+                                </connections>
                             </button>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" style="wheels" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GpO-MQ-KK9">
                                 <rect key="frame" x="47" y="530" width="320" height="216"/>
@@ -268,6 +298,16 @@
                             <constraint firstItem="bul-Au-6q5" firstAttribute="trailing" secondItem="v6o-2b-pgm" secondAttribute="trailing" constant="20" id="vBL-Hl-zQ3"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="copyCountDownLabel" destination="Cd8-b0-NQS" id="jpq-nI-p5A"/>
+                        <outlet property="copyTextView" destination="6ou-D7-Cee" id="CUc-TZ-ofh"/>
+                        <outlet property="finishButton" destination="vn8-XL-yfV" id="s7d-nf-bHv"/>
+                        <outlet property="memorizeCountDownLabel" destination="BeQ-l0-SEa" id="qIg-X1-0aL"/>
+                        <outlet property="memorizeDatePicker" destination="GpO-MQ-KK9" id="r5m-5p-Uvk"/>
+                        <outlet property="originalTextView" destination="v6o-2b-pgm" id="2A4-Io-GA7"/>
+                        <outlet property="selfFinishButton" destination="27W-Fp-q5S" id="y6l-M3-Rt4"/>
+                        <outlet property="startButton" destination="bZz-eA-5C3" id="fGD-Ir-Flc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kRB-bP-ZNi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -27,7 +27,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="BeCopied" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="BeCopied" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -220,20 +220,20 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6ou-D7-Cee">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6ou-D7-Cee">
                                 <rect key="frame" x="20" y="464" width="374" height="348"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BeQ-l0-SEa">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BeQ-l0-SEa">
                                 <rect key="frame" x="64" y="596" width="286" height="84"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="70"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cd8-b0-NQS">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cd8-b0-NQS">
                                 <rect key="frame" x="64" y="226" width="286" height="84"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="70"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -247,18 +247,18 @@
                                     <action selector="startButtonTapped:" destination="FcR-TB-2qd" eventType="touchUpInside" id="7dH-G6-hsg"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vn8-XL-yfV">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vn8-XL-yfV">
                                 <rect key="frame" x="132" y="235" width="150" height="66"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="finishButton"/>
+                                <buttonConfiguration key="configuration" style="plain" image="finishandsaveButton"/>
                                 <connections>
                                     <action selector="finishButtonTapped:" destination="FcR-TB-2qd" eventType="touchUpInside" id="4Nt-Mi-w7z"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="27W-Fp-q5S">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="27W-Fp-q5S">
                                 <rect key="frame" x="132" y="325" width="150" height="66"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="finishButton"/>
+                                <buttonConfiguration key="configuration" style="plain" image="finishandsaveButton"/>
                                 <connections>
                                     <action selector="selfFinishButtonTapped:" destination="FcR-TB-2qd" eventType="touchUpInside" id="GCW-Cb-Uzy"/>
                                 </connections>
@@ -266,6 +266,14 @@
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" style="wheels" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GpO-MQ-KK9">
                                 <rect key="frame" x="47" y="530" width="320" height="216"/>
                             </datePicker>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="g7I-aX-5Jd">
+                                <rect key="frame" x="50" y="558" width="314" height="4"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </progressView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jUm-pF-SoY">
+                                <rect key="frame" x="50" y="188" width="314" height="4"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </progressView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bul-Au-6q5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -277,6 +285,7 @@
                             <constraint firstItem="v6o-2b-pgm" firstAttribute="top" secondItem="bul-Au-6q5" secondAttribute="top" constant="50" id="CAI-yO-478"/>
                             <constraint firstAttribute="bottom" secondItem="agO-zS-3Xp" secondAttribute="bottom" constant="-30" id="Dt6-Ra-igq"/>
                             <constraint firstItem="agO-zS-3Xp" firstAttribute="centerY" secondItem="ZYy-a6-0MG" secondAttribute="centerY" id="E5m-cd-GbL"/>
+                            <constraint firstItem="bul-Au-6q5" firstAttribute="trailing" secondItem="g7I-aX-5Jd" secondAttribute="trailing" constant="50" id="EyK-LO-a9z"/>
                             <constraint firstItem="Cd8-b0-NQS" firstAttribute="centerY" secondItem="v6o-2b-pgm" secondAttribute="centerY" id="F1b-9j-nwy"/>
                             <constraint firstItem="v6o-2b-pgm" firstAttribute="leading" secondItem="bul-Au-6q5" secondAttribute="leading" constant="20" id="GID-wW-R1J"/>
                             <constraint firstItem="27W-Fp-q5S" firstAttribute="centerX" secondItem="ZYy-a6-0MG" secondAttribute="centerX" id="IZd-AP-6pz"/>
@@ -288,22 +297,31 @@
                             <constraint firstItem="Cd8-b0-NQS" firstAttribute="centerX" secondItem="ZYy-a6-0MG" secondAttribute="centerX" id="RMC-iU-lAK"/>
                             <constraint firstAttribute="trailing" secondItem="agO-zS-3Xp" secondAttribute="trailing" constant="-30" id="ScK-zO-Auv"/>
                             <constraint firstItem="6ou-D7-Cee" firstAttribute="centerY" secondItem="ZYy-a6-0MG" secondAttribute="centerY" constant="190" id="XlG-Le-VIy"/>
+                            <constraint firstItem="g7I-aX-5Jd" firstAttribute="centerX" secondItem="ZYy-a6-0MG" secondAttribute="centerX" id="Y4s-fU-Dnr"/>
                             <constraint firstItem="v6o-2b-pgm" firstAttribute="centerY" secondItem="ZYy-a6-0MG" secondAttribute="centerY" constant="-180" id="ZKe-wI-fCP"/>
+                            <constraint firstItem="jUm-pF-SoY" firstAttribute="leading" secondItem="bul-Au-6q5" secondAttribute="leading" constant="50" id="aUY-ZW-1aR"/>
                             <constraint firstItem="BeQ-l0-SEa" firstAttribute="centerY" secondItem="6ou-D7-Cee" secondAttribute="centerY" id="b6R-Dz-c3S"/>
+                            <constraint firstItem="jUm-pF-SoY" firstAttribute="centerX" secondItem="ZYy-a6-0MG" secondAttribute="centerX" id="bjd-zH-3WQ"/>
                             <constraint firstItem="bZz-eA-5C3" firstAttribute="centerX" secondItem="ZYy-a6-0MG" secondAttribute="centerX" id="bjs-91-SCV"/>
                             <constraint firstItem="bZz-eA-5C3" firstAttribute="top" secondItem="BeQ-l0-SEa" secondAttribute="bottom" constant="15" id="ddE-R1-Upq"/>
+                            <constraint firstItem="bul-Au-6q5" firstAttribute="trailing" secondItem="jUm-pF-SoY" secondAttribute="trailing" constant="50" id="gVH-Mw-EWe"/>
                             <constraint firstItem="GpO-MQ-KK9" firstAttribute="centerY" secondItem="6ou-D7-Cee" secondAttribute="centerY" id="kts-aD-5Md"/>
+                            <constraint firstItem="BeQ-l0-SEa" firstAttribute="top" secondItem="g7I-aX-5Jd" secondAttribute="bottom" constant="34" id="n0B-5d-cmo"/>
+                            <constraint firstItem="g7I-aX-5Jd" firstAttribute="leading" secondItem="bul-Au-6q5" secondAttribute="leading" constant="50" id="oMN-9Q-7Yc"/>
                             <constraint firstItem="agO-zS-3Xp" firstAttribute="leading" secondItem="ZYy-a6-0MG" secondAttribute="leading" constant="-30" id="qQJ-cf-Z5M"/>
                             <constraint firstItem="bul-Au-6q5" firstAttribute="trailing" secondItem="6ou-D7-Cee" secondAttribute="trailing" constant="20" id="v3H-eB-X0P"/>
                             <constraint firstItem="bul-Au-6q5" firstAttribute="trailing" secondItem="v6o-2b-pgm" secondAttribute="trailing" constant="20" id="vBL-Hl-zQ3"/>
+                            <constraint firstItem="Cd8-b0-NQS" firstAttribute="top" secondItem="jUm-pF-SoY" secondAttribute="bottom" constant="34" id="zNZ-Yz-B9M"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="copyCountDownLabel" destination="Cd8-b0-NQS" id="jpq-nI-p5A"/>
+                        <outlet property="copyProgressView" destination="jUm-pF-SoY" id="Gl0-Uf-C7o"/>
                         <outlet property="copyTextView" destination="6ou-D7-Cee" id="CUc-TZ-ofh"/>
                         <outlet property="finishButton" destination="vn8-XL-yfV" id="s7d-nf-bHv"/>
                         <outlet property="memorizeCountDownLabel" destination="BeQ-l0-SEa" id="qIg-X1-0aL"/>
                         <outlet property="memorizeDatePicker" destination="GpO-MQ-KK9" id="r5m-5p-Uvk"/>
+                        <outlet property="memorizeProgressView" destination="g7I-aX-5Jd" id="z4G-aG-Zkg"/>
                         <outlet property="originalTextView" destination="v6o-2b-pgm" id="2A4-Io-GA7"/>
                         <outlet property="selfFinishButton" destination="27W-Fp-q5S" id="y6l-M3-Rt4"/>
                         <outlet property="startButton" destination="bZz-eA-5C3" id="fGD-Ir-Flc"/>
@@ -400,7 +418,7 @@
         <image name="button04" width="281" height="73"/>
         <image name="button05" width="281" height="73"/>
         <image name="doubleLine" width="355" height="34"/>
-        <image name="finishButton" width="126" height="52"/>
+        <image name="finishandsaveButton" width="126" height="52"/>
         <image name="startButton" width="126" height="52"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

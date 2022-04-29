@@ -7,6 +7,7 @@
 
 import UIKit
 import Alamofire
+import AudioToolbox
 
 //Collection enum
 enum CollectionSelected{
@@ -16,6 +17,15 @@ enum CollectionSelected{
     case businessInUSCollection
     case teslaCollection
 }
+
+//Start, Pause, End
+enum TimerStatus{
+    case start
+    case pause
+    case end
+}
+
+
 
 class WritingViewController: UIViewController{
     
@@ -31,13 +41,22 @@ class WritingViewController: UIViewController{
     var tesla = [Tesla]()
     var teslaDescription : TeslaDescription?
     var collectionSelected: CollectionSelected?
+    var duration = 60
+    var timerStatus : TimerStatus = .end
+    var timer: DispatchSourceTimer?
+    var currentSeconds = 0
+    var copyCurruntSeconds = 0
+    
+    
     
     
     //Oulets
     @IBOutlet weak var memorizeDatePicker: UIDatePicker!
     @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var memorizeProgressView: UIProgressView!
     @IBOutlet weak var memorizeCountDownLabel: UILabel!
     @IBOutlet weak var originalTextView: UITextView!
+    @IBOutlet weak var copyProgressView: UIProgressView!
     @IBOutlet weak var copyCountDownLabel: UILabel!
     @IBOutlet weak var copyTextView: UITextView!
     @IBOutlet weak var selfFinishButton: UIButton!
@@ -51,13 +70,17 @@ class WritingViewController: UIViewController{
         
         //APIData Call
         self.collectionSelectedConfiguration()
-        //ObjectHiddenDefaults
-        self.memorizeDatePicker.isHidden = false
-        self.startButton.isHidden = false
-        self.originalTextView.isHidden = false
         //ObjectStyle
         self.memorizeDatePicker.tintColor = .white
+        //Object AlphaValue Defaults
+        [memorizeDatePicker, startButton].forEach{ $0?.alpha = 1 }
+        [memorizeCountDownLabel, memorizeProgressView, originalTextView, copyProgressView, copyCountDownLabel, copyTextView, selfFinishButton, finishButton].forEach{ $0.alpha = 0 }
+
         
+        
+        //barbutton Style
+        navigationItem.backBarButtonItem?.tintColor = .white
+
 
   
     }
@@ -68,9 +91,89 @@ class WritingViewController: UIViewController{
     }
     
     
-    
-  
 
+    
+//Timer
+    private func startMemorizeTimer(){
+
+        if self.timer == nil{
+            self.timer = DispatchSource.makeTimerSource(flags: [], queue: .main)
+            self.timer?.schedule(deadline: .now(), repeating: 1)
+            self.timer?.setEventHandler(handler: {[weak self] in
+                guard let self = self else { return }
+                self.currentSeconds -= 1
+                let hour = self.currentSeconds / 3600
+                let minutes = (self.currentSeconds % 3600) / 60
+                let seconds = (self.currentSeconds % 3600) % 60
+                self.memorizeCountDownLabel.text = String(format: "%02d:%02d:%02d", hour, minutes, seconds)
+                self.memorizeProgressView.progress = Float(self.currentSeconds) / Float(self.duration)
+                if self.currentSeconds <= 0{
+                    self.memorizeStop()
+                    AudioServicesPlaySystemSound(1005)
+                    self.startCopyTimer()
+
+                    
+
+                }
+            })
+            self.timer?.resume()
+        }
+    }
+    
+    
+
+    private func startCopyTimer(){
+        if self.timer == nil{
+            self.timer = DispatchSource.makeTimerSource(flags: [], queue: .main)
+            self.timer?.schedule(deadline: .now(), repeating: 1)
+            self.timer?.setEventHandler(handler: {[weak self] in
+                guard let self = self else { return }
+                self.copyCurruntSeconds -= 1
+                let hour = self.copyCurruntSeconds / 3600
+                let minutes = (self.copyCurruntSeconds % 3600) / 60
+                let seconds = (self.copyCurruntSeconds % 3600) % 60
+                self.copyCountDownLabel.text = String(format: "%02d:%02d:%02d", hour, minutes, seconds)
+                self.copyProgressView.progress = Float(self.copyCurruntSeconds) / Float(self.duration)
+                if self.copyCurruntSeconds <= 0{
+                    self.memorizeStop()
+                    AudioServicesPlaySystemSound(1005)
+
+                    
+
+                }
+            })
+            self.timer?.resume()
+        }
+        
+    }
+    
+    
+    private func memorizeStop(){
+        if self.timerStatus == .pause{
+            self.timer?.resume()
+        }
+        self.timerStatus = .end
+        UIView.animate(withDuration: 0.5, animations: {
+            self.memorizeCountDownLabel.alpha = 0
+            self.memorizeProgressView.alpha = 0
+            self.memorizeDatePicker.alpha = 0
+            self.originalTextView.alpha = 0
+            self.startButton.alpha = 0
+            self.copyCountDownLabel.alpha = 1
+            self.selfFinishButton.alpha = 1
+            self.copyTextView.alpha = 1
+            self.copyProgressView.alpha = 1
+            
+        })
+        self.startButton.isSelected = false
+        self.timer?.cancel()
+        self.timer = nil
+        
+    }
+    
+    private func copyStop(){
+        
+    }
     
     
     
@@ -318,10 +421,50 @@ class WritingViewController: UIViewController{
     
     //Action Method
     @IBAction func startButtonTapped(_ sender: UIButton) {
+        self.duration = Int(self.memorizeDatePicker.countDownDuration)
+        switch self.timerStatus{
+        case .end :
+            self.currentSeconds = self.duration
+            self.copyCurruntSeconds = self.duration
+            self.timerStatus = .start
+            UIView.animate(withDuration: 0.5, animations: {
+                self.memorizeCountDownLabel.alpha = 1
+                self.memorizeProgressView.alpha = 1
+                self.memorizeDatePicker.alpha = 0
+                self.originalTextView.alpha = 1
+                self.startButton.setImage(UIImage(named:"pauseButton"), for: .normal)
+            })
+            self.startButton.isSelected = true
+            self.startMemorizeTimer()
+            
+        case .start:
+            self.timerStatus = .pause
+            self.startButton.isSelected = false
+            self.startButton.setImage(UIImage(named:"startButton"), for: .normal)
+            self.timer?.suspend()
+        case .pause:
+            self.timerStatus = .start
+            self.startButton.isSelected = true
+            self.timer?.resume()
+            self.startButton.setImage(UIImage(named:"pauseButton"), for: .normal)
+
+            
+        }
+
+        
     }
     @IBAction func selfFinishButtonTapped(_ sender: UIButton) {
+        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ViewController") as? ViewController else { return }
+        navigationController?.pushViewController(viewController, animated: true)
+        
+        //저장코드
     }
     @IBAction func finishButtonTapped(_ sender: Any) {
+        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ViewController") as? ViewController else { return }
+        navigationController?.pushViewController(viewController, animated: true)
+        
+        
+        //저장코드
     }
     
 }

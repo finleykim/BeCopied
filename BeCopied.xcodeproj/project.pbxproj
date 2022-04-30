@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		43FF83780A8044BAF5C15E66 /* Pods_BeCopied.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F4CFC7A95824B887C224DAE /* Pods_BeCopied.framework */; };
+		C56E19D8281D546D006451B2 /* Writing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56E19D7281D546D006451B2 /* Writing.swift */; };
 		C578D6B928197580004A4BBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C578D6B828197580004A4BBF /* AppDelegate.swift */; };
 		C578D6BB28197580004A4BBF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C578D6BA28197580004A4BBF /* SceneDelegate.swift */; };
 		C578D6BD28197580004A4BBF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C578D6BC28197580004A4BBF /* ViewController.swift */; };
@@ -19,13 +20,14 @@
 		C59590D1281A96F6007612C1 /* CollectionSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59590D0281A96F6007612C1 /* CollectionSelectViewController.swift */; };
 		C59590D3281A972E007612C1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59590D2281A972E007612C1 /* DetailViewController.swift */; };
 		C59590D5281A9755007612C1 /* WritingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59590D4281A9755007612C1 /* WritingViewController.swift */; };
-		C59590D7281AA331007612C1 /* Entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59590D6281AA331007612C1 /* Entities.swift */; };
+		C59590D7281AA331007612C1 /* DescriptionEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59590D6281AA331007612C1 /* DescriptionEntities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0B562EEABA9AAE292EBE25E6 /* Pods-BeCopied.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeCopied.debug.xcconfig"; path = "Target Support Files/Pods-BeCopied/Pods-BeCopied.debug.xcconfig"; sourceTree = "<group>"; };
 		2F4CFC7A95824B887C224DAE /* Pods_BeCopied.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeCopied.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B17DA250D068E24B70CA0BC7 /* Pods-BeCopied.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeCopied.release.xcconfig"; path = "Target Support Files/Pods-BeCopied/Pods-BeCopied.release.xcconfig"; sourceTree = "<group>"; };
+		C56E19D7281D546D006451B2 /* Writing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Writing.swift; sourceTree = "<group>"; };
 		C578D6B528197580004A4BBF /* BeCopied.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeCopied.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C578D6B828197580004A4BBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C578D6BA28197580004A4BBF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,7 +41,7 @@
 		C59590D0281A96F6007612C1 /* CollectionSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionSelectViewController.swift; sourceTree = "<group>"; };
 		C59590D2281A972E007612C1 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C59590D4281A9755007612C1 /* WritingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingViewController.swift; sourceTree = "<group>"; };
-		C59590D6281AA331007612C1 /* Entities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entities.swift; sourceTree = "<group>"; };
+		C59590D6281AA331007612C1 /* DescriptionEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionEntities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +98,8 @@
 				C59590D0281A96F6007612C1 /* CollectionSelectViewController.swift */,
 				C59590D2281A972E007612C1 /* DetailViewController.swift */,
 				C59590D4281A9755007612C1 /* WritingViewController.swift */,
-				C59590D6281AA331007612C1 /* Entities.swift */,
+				C59590D6281AA331007612C1 /* DescriptionEntities.swift */,
+				C56E19D7281D546D006451B2 /* Writing.swift */,
 			);
 			path = BeCopied;
 			sourceTree = "<group>";
@@ -228,10 +231,11 @@
 				C578D6D22819816B004A4BBF /* CollectionViewCell.swift in Sources */,
 				C59590D5281A9755007612C1 /* WritingViewController.swift in Sources */,
 				C59590D1281A96F6007612C1 /* CollectionSelectViewController.swift in Sources */,
+				C56E19D8281D546D006451B2 /* Writing.swift in Sources */,
 				C578D6BD28197580004A4BBF /* ViewController.swift in Sources */,
 				C59590D3281A972E007612C1 /* DetailViewController.swift in Sources */,
 				C578D6B928197580004A4BBF /* AppDelegate.swift in Sources */,
-				C59590D7281AA331007612C1 /* Entities.swift in Sources */,
+				C59590D7281AA331007612C1 /* DescriptionEntities.swift in Sources */,
 				C578D6BB28197580004A4BBF /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

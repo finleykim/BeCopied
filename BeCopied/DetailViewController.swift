@@ -8,5 +8,10 @@
 import UIKit
 
 class DetailViewController: UIViewController{
+    var writing: Writing?
+    var indexPath: IndexPath?
     
+    
+    @IBOutlet weak var originalTextView: UITextView!
+    @IBOutlet weak var copyViewController: UITextView!
 }

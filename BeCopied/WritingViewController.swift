@@ -9,6 +9,7 @@ import UIKit
 import Alamofire
 import AudioToolbox
 
+
 //Collection enum
 enum CollectionSelected{
     case techCrunchCollection
@@ -45,7 +46,8 @@ class WritingViewController: UIViewController{
     var timerStatus : TimerStatus = .end
     var timer: DispatchSourceTimer?
     var currentSeconds = 0
-    var copyCurruntSeconds = 0
+    var copyCurrentSeconds = 0
+    
     
     
     
@@ -128,13 +130,13 @@ class WritingViewController: UIViewController{
             self.timer?.schedule(deadline: .now(), repeating: 1)
             self.timer?.setEventHandler(handler: {[weak self] in
                 guard let self = self else { return }
-                self.copyCurruntSeconds -= 1
-                let hour = self.copyCurruntSeconds / 3600
-                let minutes = (self.copyCurruntSeconds % 3600) / 60
-                let seconds = (self.copyCurruntSeconds % 3600) % 60
+                self.copyCurrentSeconds -= 1
+                let hour = self.copyCurrentSeconds / 3600
+                let minutes = (self.copyCurrentSeconds % 3600) / 60
+                let seconds = (self.copyCurrentSeconds % 3600) % 60
                 self.copyCountDownLabel.text = String(format: "%02d:%02d:%02d", hour, minutes, seconds)
-                self.copyProgressView.progress = Float(self.copyCurruntSeconds) / Float(self.duration)
-                if self.copyCurruntSeconds <= 0{
+                self.copyProgressView.progress = Float(self.copyCurrentSeconds) / Float(self.duration)
+                if self.copyCurrentSeconds <= 0{
                     self.memorizeStop()
                     AudioServicesPlaySystemSound(1005)
 
@@ -172,6 +174,7 @@ class WritingViewController: UIViewController{
     }
     
     private func copyStop(){
+        
         
     }
     
@@ -285,6 +288,8 @@ class WritingViewController: UIViewController{
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
+    
+
     
     
     
@@ -425,7 +430,7 @@ class WritingViewController: UIViewController{
         switch self.timerStatus{
         case .end :
             self.currentSeconds = self.duration
-            self.copyCurruntSeconds = self.duration
+            self.copyCurrentSeconds = self.duration
             self.timerStatus = .start
             UIView.animate(withDuration: 0.5, animations: {
                 self.memorizeCountDownLabel.alpha = 1
@@ -440,11 +445,13 @@ class WritingViewController: UIViewController{
         case .start:
             self.timerStatus = .pause
             self.startButton.isSelected = false
+            self.originalTextView.alpha = 0
             self.startButton.setImage(UIImage(named:"startButton"), for: .normal)
             self.timer?.suspend()
         case .pause:
             self.timerStatus = .start
             self.startButton.isSelected = true
+            self.originalTextView.alpha = 1
             self.timer?.resume()
             self.startButton.setImage(UIImage(named:"pauseButton"), for: .normal)
 
@@ -461,6 +468,9 @@ class WritingViewController: UIViewController{
     }
     @IBAction func finishButtonTapped(_ sender: Any) {
         guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ViewController") as? ViewController else { return }
+    
+        
+        
         navigationController?.pushViewController(viewController, animated: true)
         
         

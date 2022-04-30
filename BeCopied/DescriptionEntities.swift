@@ -42,5 +42,3 @@ struct TeslaDescription: Codable{
 }
 
 
-
-

@@ -10,6 +10,11 @@ import Alamofire
 import AudioToolbox
 
 
+protocol WritingViewDelegate: AnyObject{
+    func didSelectReigster(writing: Writing)
+}
+
+
 //Collection enum
 enum CollectionSelected{
     case techCrunchCollection
@@ -47,7 +52,7 @@ class WritingViewController: UIViewController{
     var timer: DispatchSourceTimer?
     var currentSeconds = 0
     var copyCurrentSeconds = 0
-    
+    weak var delegate: WritingViewDelegate?
     
     
     
@@ -77,15 +82,17 @@ class WritingViewController: UIViewController{
         //Object AlphaValue Defaults
         [memorizeDatePicker, startButton].forEach{ $0?.alpha = 1 }
         [memorizeCountDownLabel, memorizeProgressView, originalTextView, copyProgressView, copyCountDownLabel, copyTextView, selfFinishButton, finishButton].forEach{ $0.alpha = 0 }
-
+     
         
         
         //barbutton Style
         navigationItem.backBarButtonItem?.tintColor = .white
 
-
-  
     }
+    
+
+
+    
     
     //touchesBegan
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -173,11 +180,8 @@ class WritingViewController: UIViewController{
         
     }
     
-    private func copyStop(){
-        
-        
-    }
-    
+
+
     
     
   //configuration - LabelText
@@ -462,22 +466,30 @@ class WritingViewController: UIViewController{
     }
     @IBAction func selfFinishButtonTapped(_ sender: UIButton) {
         guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ViewController") as? ViewController else { return }
+        guard let original = self.originalTextView.text else { return }
+        guard let copy = self.copyTextView.text else { return }
+        let writing = Writing(original: original, copy: copy)
+        self.delegate?.didSelectReigster(writing: writing)
+        
+        self.memorizeStop()
+        
+        
+        
         navigationController?.pushViewController(viewController, animated: true)
         
-        //저장코드
+       
     }
     @IBAction func finishButtonTapped(_ sender: Any) {
         guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ViewController") as? ViewController else { return }
-    
-        
-        
+        guard let original = self.originalTextView.text else { return }
+        guard let copy = self.copyTextView.text else { return }
+        let writing = Writing(original: original, copy: copy)
+        self.delegate?.didSelectReigster(writing: writing)
         navigationController?.pushViewController(viewController, animated: true)
         
-        
-        //저장코드
+      
     }
     
 }
-
 
 

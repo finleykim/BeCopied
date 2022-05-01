@@ -39,14 +39,6 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CI" translatesAutoresizingMaskIntoConstraints="NO" id="A3T-R7-bGC">
                                 <rect key="frame" x="110" y="8" width="194" height="171"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fdT-gI-Xql">
-                                <rect key="frame" x="23" y="249" width="184" height="219"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="addButon"/>
-                                <connections>
-                                    <action selector="addButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xu4-CK-e4n"/>
-                                </connections>
-                            </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doubleLine" translatesAutoresizingMaskIntoConstraints="NO" id="Lg1-au-YRu">
                                 <rect key="frame" x="10" y="169" width="394" height="40"/>
                                 <constraints>
@@ -71,7 +63,7 @@
                                 </subviews>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1bP-h5-vJX">
-                                <rect key="frame" x="10" y="479" width="394" height="383"/>
+                                <rect key="frame" x="10" y="239" width="394" height="623"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fbU-QM-dXU">
                                     <size key="itemSize" width="222" height="203"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -98,7 +90,6 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1bP-h5-vJX" secondAttribute="trailing" constant="10" id="4KN-GQ-hlE"/>
                             <constraint firstItem="e1v-mi-ODB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8Qj-Wz-1AM"/>
                             <constraint firstAttribute="trailing" secondItem="e1v-mi-ODB" secondAttribute="trailing" constant="-10" id="BgL-zY-fdv"/>
-                            <constraint firstItem="fdT-gI-Xql" firstAttribute="top" secondItem="A3T-R7-bGC" secondAttribute="bottom" constant="70" id="Ciy-IH-fM5"/>
                             <constraint firstItem="e1v-mi-ODB" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Da4-U5-zDU"/>
                             <constraint firstItem="e1v-mi-ODB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="-10" id="HM3-w6-IA5"/>
                             <constraint firstItem="GRU-ae-31d" firstAttribute="centerY" secondItem="Lg1-au-YRu" secondAttribute="centerY" id="Ojn-TQ-mzi"/>
@@ -107,9 +98,8 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Lg1-au-YRu" secondAttribute="trailing" constant="10" id="Ycm-Zr-UfD"/>
                             <constraint firstAttribute="trailing" secondItem="A3T-R7-bGC" secondAttribute="trailing" constant="110" id="Yf9-E1-gal"/>
                             <constraint firstItem="1bP-h5-vJX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="dNM-C9-YJQ"/>
-                            <constraint firstItem="1bP-h5-vJX" firstAttribute="top" secondItem="A3T-R7-bGC" secondAttribute="bottom" constant="300" id="deB-1d-EEk"/>
+                            <constraint firstItem="1bP-h5-vJX" firstAttribute="top" secondItem="A3T-R7-bGC" secondAttribute="bottom" constant="60" id="deB-1d-EEk"/>
                             <constraint firstItem="Lg1-au-YRu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="f5e-Ei-tEd"/>
-                            <constraint firstItem="fdT-gI-Xql" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-92" id="pGf-Bv-9uO"/>
                             <constraint firstItem="A3T-R7-bGC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="-80" id="qjT-NA-1ol"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="1bP-h5-vJX" secondAttribute="bottom" id="sGY-Kg-lDL"/>
                             <constraint firstItem="GRU-ae-31d" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="vCq-Pd-LdQ"/>
@@ -117,7 +107,14 @@
                             <constraint firstAttribute="bottom" secondItem="e1v-mi-ODB" secondAttribute="bottom" constant="-10" id="xgH-tO-274"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="5lZ-mH-ohU"/>
+                    <navigationItem key="navigationItem" id="5lZ-mH-ohU">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="nAf-bI-lEY">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="addButtonTapped:" destination="BYZ-38-t0r" id="3hw-EQ-klE"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="CountLabel" destination="OmE-wV-hut" id="Xoo-FQ-5C8"/>
                         <outlet property="collections" destination="1bP-h5-vJX" id="JcC-ui-di5"/>
@@ -419,7 +416,6 @@
     </scenes>
     <resources>
         <image name="CI" width="612" height="171"/>
-        <image name="addButon" width="160" height="205"/>
         <image name="background" width="1235" height="2538"/>
         <image name="button01" width="281" height="73"/>
         <image name="button02" width="281" height="73"/>

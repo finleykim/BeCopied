@@ -8,5 +8,6 @@
 import Foundation
 
 struct Writing{
-    var content : String
+    var original : String
+    var copy : String
 }

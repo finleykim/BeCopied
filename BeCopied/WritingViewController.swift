@@ -32,6 +32,13 @@ enum TimerStatus{
 }
 
 
+//new, edit
+
+enum EditMode{
+    case new
+    case edit(IndexPath, Writing)
+}
+
 
 class WritingViewController: UIViewController{
     
@@ -53,6 +60,7 @@ class WritingViewController: UIViewController{
     var currentSeconds = 0
     var copyCurrentSeconds = 0
     weak var delegate: WritingViewDelegate?
+    var editMode : EditMode = .new
     
     
     
@@ -68,6 +76,7 @@ class WritingViewController: UIViewController{
     @IBOutlet weak var copyTextView: UITextView!
     @IBOutlet weak var selfFinishButton: UIButton!
     @IBOutlet weak var finishButton: UIButton!
+    @IBOutlet weak var editDoneButton: UIBarButtonItem!
     
     
     
@@ -82,11 +91,15 @@ class WritingViewController: UIViewController{
         //Object AlphaValue Defaults
         [memorizeDatePicker, startButton].forEach{ $0?.alpha = 1 }
         [memorizeCountDownLabel, memorizeProgressView, originalTextView, copyProgressView, copyCountDownLabel, copyTextView, selfFinishButton, finishButton].forEach{ $0.alpha = 0 }
+        
+        //func Call
+        self.configureEditMode()
      
         
         
         //barbutton Style
         navigationItem.backBarButtonItem?.tintColor = .white
+        self.editDoneButton.customView?.alpha = 0
 
     }
     
@@ -100,9 +113,25 @@ class WritingViewController: UIViewController{
     }
     
     
+    
+    //editMode
+    private func configureEditMode(){
+        switch self.editMode{
+        case let .edit(_, writing):
+            self.copyTextView.text = writing.copy
+            self.originalTextView.text = writing.original
+            self.editDoneButton.customView?.alpha = 1
+        default:
+            break
+        }
+        
+
+    }
+    
+    
 
     
-//Timer
+    //Timer
     private func startMemorizeTimer(){
 
         if self.timer == nil{
@@ -488,6 +517,8 @@ class WritingViewController: UIViewController{
         navigationController?.pushViewController(viewController, animated: true)
         
       
+    }
+    @IBAction func editDoneButtonTapped(_ sender: UIBarButtonItem) {
     }
     
 }

@@ -42,6 +42,11 @@ class CollectionSelectViewController: UIViewController{
     @IBAction func teslaButtonTapped(_ sender: UIButton) {
         guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "WritingViewController") as? WritingViewController else { return }
         viewController.collectionSelected = .teslaCollection
+        
+
+            
+        
+        
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     

@@ -276,6 +276,19 @@
                                 <rect key="frame" x="50" y="198" width="314" height="4"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </progressView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tFk-Cb-AMH">
+                                <rect key="frame" x="0.0" y="34" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem id="Lfh-NF-4Ce">
+                                        <barButtonItem key="rightBarButtonItem" title="Done" id="KEP-dU-8aN">
+                                            <connections>
+                                                <action selector="editDoneButtonTapped:" destination="FcR-TB-2qd" id="vE2-YG-Bzr"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bul-Au-6q5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -320,6 +333,7 @@
                         <outlet property="copyCountDownLabel" destination="Cd8-b0-NQS" id="jpq-nI-p5A"/>
                         <outlet property="copyProgressView" destination="jUm-pF-SoY" id="Gl0-Uf-C7o"/>
                         <outlet property="copyTextView" destination="6ou-D7-Cee" id="CUc-TZ-ofh"/>
+                        <outlet property="editDoneButton" destination="KEP-dU-8aN" id="MJX-Ah-5to"/>
                         <outlet property="finishButton" destination="vn8-XL-yfV" id="s7d-nf-bHv"/>
                         <outlet property="memorizeCountDownLabel" destination="BeQ-l0-SEa" id="qIg-X1-0aL"/>
                         <outlet property="memorizeDatePicker" destination="GpO-MQ-KK9" id="r5m-5p-Uvk"/>
@@ -345,7 +359,7 @@
                                 <rect key="frame" x="-30" y="-30" width="474" height="956"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Euc-7r-YXW">
-                                <rect key="frame" x="20" y="74" width="374" height="348"/>
+                                <rect key="frame" x="20" y="94" width="374" height="348"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Original" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pHg-oZ-v0y">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="24"/>
@@ -364,7 +378,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="q1Z-v6-iYj">
-                                <rect key="frame" x="20" y="464" width="374" height="368"/>
+                                <rect key="frame" x="20" y="484" width="374" height="368"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Be Copied" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NnM-R2-XNP">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="24"/>
@@ -382,6 +396,20 @@
                                     </textView>
                                 </subviews>
                             </stackView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qUm-W7-ZQn">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <navigationItem id="f2c-gy-PYf">
+                                        <barButtonItem key="rightBarButtonItem" title="Edit" id="pQk-Dt-xdg">
+                                            <connections>
+                                                <action selector="editButtonTapped:" destination="L6o-5a-e4i" id="u8L-1x-NCM"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="L0D-pQ-NrH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -390,7 +418,7 @@
                             <constraint firstAttribute="bottom" secondItem="ZBB-jX-VIg" secondAttribute="bottom" constant="-30" id="J5J-y7-BYK"/>
                             <constraint firstAttribute="trailing" secondItem="ZBB-jX-VIg" secondAttribute="trailing" constant="-30" id="OAa-bZ-Y5a"/>
                             <constraint firstItem="ZBB-jX-VIg" firstAttribute="centerY" secondItem="eFw-ew-IdU" secondAttribute="centerY" id="PdA-HC-KuT"/>
-                            <constraint firstItem="Euc-7r-YXW" firstAttribute="top" secondItem="L0D-pQ-NrH" secondAttribute="top" constant="30" id="QZt-Dm-fnq"/>
+                            <constraint firstItem="Euc-7r-YXW" firstAttribute="top" secondItem="L0D-pQ-NrH" secondAttribute="top" constant="50" id="QZt-Dm-fnq"/>
                             <constraint firstItem="q1Z-v6-iYj" firstAttribute="centerX" secondItem="eFw-ew-IdU" secondAttribute="centerX" id="XfS-6y-DmZ"/>
                             <constraint firstItem="Euc-7r-YXW" firstAttribute="centerX" secondItem="eFw-ew-IdU" secondAttribute="centerX" id="YbL-6r-WbU"/>
                             <constraint firstItem="ZBB-jX-VIg" firstAttribute="top" secondItem="eFw-ew-IdU" secondAttribute="top" constant="-30" id="ZaV-xw-QVT"/>
@@ -398,14 +426,15 @@
                             <constraint firstItem="L0D-pQ-NrH" firstAttribute="trailing" secondItem="q1Z-v6-iYj" secondAttribute="trailing" constant="20" id="e7Q-fX-EzP"/>
                             <constraint firstItem="L0D-pQ-NrH" firstAttribute="trailing" secondItem="Euc-7r-YXW" secondAttribute="trailing" constant="20" id="jcI-BW-2y5"/>
                             <constraint firstItem="q1Z-v6-iYj" firstAttribute="leading" secondItem="L0D-pQ-NrH" secondAttribute="leading" constant="20" id="k3q-fk-Yok"/>
-                            <constraint firstItem="q1Z-v6-iYj" firstAttribute="centerY" secondItem="eFw-ew-IdU" secondAttribute="centerY" constant="200" id="nMg-KX-LT1"/>
-                            <constraint firstItem="Euc-7r-YXW" firstAttribute="centerY" secondItem="eFw-ew-IdU" secondAttribute="centerY" constant="-200" id="nbW-N6-Psw"/>
-                            <constraint firstItem="L0D-pQ-NrH" firstAttribute="bottom" secondItem="q1Z-v6-iYj" secondAttribute="bottom" constant="30" id="xsy-9P-ExE"/>
+                            <constraint firstItem="q1Z-v6-iYj" firstAttribute="centerY" secondItem="eFw-ew-IdU" secondAttribute="centerY" constant="220" id="nMg-KX-LT1"/>
+                            <constraint firstItem="Euc-7r-YXW" firstAttribute="centerY" secondItem="eFw-ew-IdU" secondAttribute="centerY" constant="-180" id="nbW-N6-Psw"/>
+                            <constraint firstItem="L0D-pQ-NrH" firstAttribute="bottom" secondItem="q1Z-v6-iYj" secondAttribute="bottom" constant="10" id="xsy-9P-ExE"/>
                             <constraint firstItem="ZBB-jX-VIg" firstAttribute="leading" secondItem="eFw-ew-IdU" secondAttribute="leading" constant="-30" id="zor-pi-FuU"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="copyViewController" destination="E6i-7a-weC" id="vRJ-lV-Gsa"/>
+                        <outlet property="copyTextView" destination="E6i-7a-weC" id="3Ot-Be-mr9"/>
+                        <outlet property="navigationBar" destination="qUm-W7-ZQn" id="Or9-Si-dBL"/>
                         <outlet property="originalTextView" destination="CRG-gh-lAb" id="EZ7-q4-e6L"/>
                     </connections>
                 </viewController>

@@ -276,19 +276,6 @@
                                 <rect key="frame" x="50" y="198" width="314" height="4"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </progressView>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tFk-Cb-AMH">
-                                <rect key="frame" x="0.0" y="34" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem id="Lfh-NF-4Ce">
-                                        <barButtonItem key="rightBarButtonItem" title="Done" id="KEP-dU-8aN">
-                                            <connections>
-                                                <action selector="editDoneButtonTapped:" destination="FcR-TB-2qd" id="vE2-YG-Bzr"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bul-Au-6q5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -333,7 +320,6 @@
                         <outlet property="copyCountDownLabel" destination="Cd8-b0-NQS" id="jpq-nI-p5A"/>
                         <outlet property="copyProgressView" destination="jUm-pF-SoY" id="Gl0-Uf-C7o"/>
                         <outlet property="copyTextView" destination="6ou-D7-Cee" id="CUc-TZ-ofh"/>
-                        <outlet property="editDoneButton" destination="KEP-dU-8aN" id="MJX-Ah-5to"/>
                         <outlet property="finishButton" destination="vn8-XL-yfV" id="s7d-nf-bHv"/>
                         <outlet property="memorizeCountDownLabel" destination="BeQ-l0-SEa" id="qIg-X1-0aL"/>
                         <outlet property="memorizeDatePicker" destination="GpO-MQ-KK9" id="r5m-5p-Uvk"/>
@@ -358,84 +344,72 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="ZBB-jX-VIg">
                                 <rect key="frame" x="-30" y="-30" width="474" height="956"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Euc-7r-YXW">
-                                <rect key="frame" x="20" y="94" width="374" height="348"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="xTj-4g-4Jk">
+                                <rect key="frame" x="20" y="74" width="374" height="768"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Original" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pHg-oZ-v0y">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="CRG-gh-lAb">
-                                        <rect key="frame" x="0.0" y="34" width="374" height="314"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                        <color key="textColor" systemColor="labelColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Euc-7r-YXW">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="369"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Original" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pHg-oZ-v0y">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="uFW-b6-3hH"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PNT-vl-Le9">
+                                                <rect key="frame" x="0.0" y="50" width="374" height="319"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="q1Z-v6-iYj">
+                                        <rect key="frame" x="0.0" y="399" width="374" height="369"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Be Copied" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NnM-R2-XNP">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="JVy-oR-fwf"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SDf-6G-Mc1">
+                                                <rect key="frame" x="0.0" y="50" width="374" height="319"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="q1Z-v6-iYj">
-                                <rect key="frame" x="20" y="484" width="374" height="368"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Be Copied" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NnM-R2-XNP">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="E6i-7a-weC">
-                                        <rect key="frame" x="0.0" y="34" width="374" height="334"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                        <color key="textColor" systemColor="labelColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                </subviews>
-                            </stackView>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qUm-W7-ZQn">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <items>
-                                    <navigationItem id="f2c-gy-PYf">
-                                        <barButtonItem key="rightBarButtonItem" title="Edit" id="pQk-Dt-xdg">
-                                            <connections>
-                                                <action selector="editButtonTapped:" destination="L6o-5a-e4i" id="u8L-1x-NCM"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="L0D-pQ-NrH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="xTj-4g-4Jk" firstAttribute="top" secondItem="L0D-pQ-NrH" secondAttribute="top" constant="30" id="3Ep-SP-Vlm"/>
                             <constraint firstItem="ZBB-jX-VIg" firstAttribute="centerX" secondItem="eFw-ew-IdU" secondAttribute="centerX" id="5R2-8b-RW1"/>
+                            <constraint firstItem="xTj-4g-4Jk" firstAttribute="leading" secondItem="L0D-pQ-NrH" secondAttribute="leading" constant="20" id="7YN-kF-jdp"/>
                             <constraint firstAttribute="bottom" secondItem="ZBB-jX-VIg" secondAttribute="bottom" constant="-30" id="J5J-y7-BYK"/>
                             <constraint firstAttribute="trailing" secondItem="ZBB-jX-VIg" secondAttribute="trailing" constant="-30" id="OAa-bZ-Y5a"/>
                             <constraint firstItem="ZBB-jX-VIg" firstAttribute="centerY" secondItem="eFw-ew-IdU" secondAttribute="centerY" id="PdA-HC-KuT"/>
-                            <constraint firstItem="Euc-7r-YXW" firstAttribute="top" secondItem="L0D-pQ-NrH" secondAttribute="top" constant="50" id="QZt-Dm-fnq"/>
-                            <constraint firstItem="q1Z-v6-iYj" firstAttribute="centerX" secondItem="eFw-ew-IdU" secondAttribute="centerX" id="XfS-6y-DmZ"/>
-                            <constraint firstItem="Euc-7r-YXW" firstAttribute="centerX" secondItem="eFw-ew-IdU" secondAttribute="centerX" id="YbL-6r-WbU"/>
                             <constraint firstItem="ZBB-jX-VIg" firstAttribute="top" secondItem="eFw-ew-IdU" secondAttribute="top" constant="-30" id="ZaV-xw-QVT"/>
-                            <constraint firstItem="Euc-7r-YXW" firstAttribute="leading" secondItem="L0D-pQ-NrH" secondAttribute="leading" constant="20" id="avY-7S-Vna"/>
-                            <constraint firstItem="L0D-pQ-NrH" firstAttribute="trailing" secondItem="q1Z-v6-iYj" secondAttribute="trailing" constant="20" id="e7Q-fX-EzP"/>
-                            <constraint firstItem="L0D-pQ-NrH" firstAttribute="trailing" secondItem="Euc-7r-YXW" secondAttribute="trailing" constant="20" id="jcI-BW-2y5"/>
-                            <constraint firstItem="q1Z-v6-iYj" firstAttribute="leading" secondItem="L0D-pQ-NrH" secondAttribute="leading" constant="20" id="k3q-fk-Yok"/>
-                            <constraint firstItem="q1Z-v6-iYj" firstAttribute="centerY" secondItem="eFw-ew-IdU" secondAttribute="centerY" constant="220" id="nMg-KX-LT1"/>
-                            <constraint firstItem="Euc-7r-YXW" firstAttribute="centerY" secondItem="eFw-ew-IdU" secondAttribute="centerY" constant="-180" id="nbW-N6-Psw"/>
-                            <constraint firstItem="L0D-pQ-NrH" firstAttribute="bottom" secondItem="q1Z-v6-iYj" secondAttribute="bottom" constant="10" id="xsy-9P-ExE"/>
+                            <constraint firstItem="L0D-pQ-NrH" firstAttribute="trailing" secondItem="xTj-4g-4Jk" secondAttribute="trailing" constant="20" id="cls-Zc-eho"/>
+                            <constraint firstItem="L0D-pQ-NrH" firstAttribute="bottom" secondItem="xTj-4g-4Jk" secondAttribute="bottom" constant="20" id="d3H-LA-411"/>
                             <constraint firstItem="ZBB-jX-VIg" firstAttribute="leading" secondItem="eFw-ew-IdU" secondAttribute="leading" constant="-30" id="zor-pi-FuU"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="copyTextView" destination="E6i-7a-weC" id="3Ot-Be-mr9"/>
-                        <outlet property="navigationBar" destination="qUm-W7-ZQn" id="Or9-Si-dBL"/>
-                        <outlet property="originalTextView" destination="CRG-gh-lAb" id="EZ7-q4-e6L"/>
+                        <outlet property="copyLabel" destination="SDf-6G-Mc1" id="2D6-OV-jjU"/>
+                        <outlet property="originalLabel" destination="PNT-vl-Le9" id="OMW-48-hcL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gJb-6y-KKc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

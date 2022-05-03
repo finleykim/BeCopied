@@ -10,9 +10,9 @@ import UIKit
 class DetailViewController: UIViewController{
 
     
-    @IBOutlet weak var navigationBar: UINavigationBar!
-    @IBOutlet weak var originalTextView: UITextView!
-    @IBOutlet weak var copyTextView: UITextView!
+    
+    @IBOutlet weak var originalLabel: UILabel!
+    @IBOutlet weak var copyLabel: UILabel!
     var editButton: UIBarButtonItem?
     var deleteButton: UIBarButtonItem?
     
@@ -29,18 +29,25 @@ class DetailViewController: UIViewController{
     
     private func configureView(){
         guard let writing = self.writing else { return }
-        self.originalTextView.text = writing.original
-        self.copyTextView.text = writing.copy
-        self.editButton = UIBarButtonItem(image: nil, style: .plain, target: self, action: #selector(editButtonTapped(_:)))
-        self.deleteButton = UIBarButtonItem(image: nil, style: .plain, target: self, action: #selector(deleteButtonTapped(_:)))
+        self.originalLabel.text = writing.original
+        self.copyLabel.text = writing.copy
+        self.editButton = UIBarButtonItem(image: nil, style: .plain, target: self, action: #selector(editButtonTapped))
+        self.editButton?.tintColor = .white
+        self.editButton?.title = "Edit"
         self.navigationItem.rightBarButtonItem = self.editButton
+        
+        self.deleteButton = UIBarButtonItem(image: nil, style: .plain, target: self, action: #selector(deleteButtonTapped))
+        self.deleteButton?.tintColor = .red
+        self.deleteButton?.title = "Delete"
         self.navigationItem.leftBarButtonItem = self.deleteButton
     }
     
     
+  
+    
     //objc
     
-    @objc func editButtonTapped(_ notification: Notification){
+    @objc func editButtonTapped(){
         guard let viewController = self.storyboard?.instantiateViewController(identifier: "WritingViewController") as? WritingViewController else { return }
         guard let indexPath = self.indexPath else { return }
         guard let writing = self.writing else { return }
@@ -60,7 +67,7 @@ class DetailViewController: UIViewController{
         self.configureView()
     }
     
-    @objc func deleteButtonTapped(_ notification: Notification){
+    @objc func deleteButtonTapped(){
         guard let uuidString = self.writing?.uuidString else { return }
         NotificationCenter.default.post(
           name: NSNotification.Name("delete"),

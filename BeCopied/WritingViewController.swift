@@ -62,6 +62,9 @@ class WritingViewController: UIViewController{
     var editMode : EditMode = .new
     private var writingDate: Date?
     private var datePicker = UIDatePicker()
+    var editDoneButton : UIBarButtonItem?
+ 
+    
     
     
     
@@ -77,38 +80,23 @@ class WritingViewController: UIViewController{
     @IBOutlet weak var copyTextView: UITextView!
     @IBOutlet weak var selfFinishButton: UIButton!
     @IBOutlet weak var finishButton: UIButton!
-    @IBOutlet weak var editDoneButton: UIBarButtonItem!
+
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-       
         //APIData Call
         self.collectionSelectedConfiguration()
-        //ObjectStyle
-        self.memorizeDatePicker.tintColor = .white
-        //Object AlphaValue Defaults
-        [memorizeDatePicker, startButton].forEach{ $0?.alpha = 1 }
-        [memorizeCountDownLabel, memorizeProgressView, originalTextView, copyProgressView, copyCountDownLabel, copyTextView, selfFinishButton, finishButton].forEach{ $0.alpha = 0 }
-        self.editDoneButton.customView?.alpha = 0
-        
-        //func Call
-        self.configureEditMode()
-        
-        //barbutton Style
-        navigationController?.navigationBar.backgroundColor = .clear
-        self.editDoneButton.customView?.alpha = 0
-        self.writingDate = datePicker.date
-        //self.copyTextView.delegate = self
+        self.configureView()
 
+        self.writingDate = datePicker.date
+        
+        
+        
     }
     
 
-
-    
-  
     
     //touchesBegan
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -116,22 +104,56 @@ class WritingViewController: UIViewController{
     }
     
     
+
+
     
-    //editMode
-    private func configureEditMode(){
+    //configureView
+    private func configureView(){
         switch self.editMode{
+        case .new:
+            //ObjectStyle
+            self.memorizeDatePicker.tintColor = .white
+            //Object AlphaValue Defaults
+            [memorizeDatePicker, startButton].forEach{ $0?.alpha = 1 }
+            [memorizeCountDownLabel, memorizeProgressView, originalTextView, copyProgressView, copyCountDownLabel, copyTextView, selfFinishButton, finishButton].forEach{ $0.alpha = 0 }
+  
+            
         case let .edit(_, writing):
             self.copyTextView.text = writing.copy
             self.originalTextView.text = writing.original
             self.writingDate = writing.date
-            self.editDoneButton.customView?.alpha = 1
             [memorizeDatePicker, startButton, memorizeCountDownLabel, memorizeProgressView, copyProgressView, copyCountDownLabel, selfFinishButton, finishButton].forEach{ $0.alpha = 0 }
-        default:
-            break
+            [copyTextView, originalTextView].forEach{ $0.alpha = 1 }
+            //barButton
+            self.editDoneButton = UIBarButtonItem(image: nil, style: .plain, target: self, action: #selector(tapEditDoneButton))
+            self.editDoneButton?.title = "Done"
+            self.editDoneButton?.tintColor = .white
+            navigationItem.rightBarButtonItem = self.editDoneButton
+
         }
         
 
     }
+    
+    @objc func tapEditDoneButton(){
+        guard let original = self.originalTextView.text else { return }
+        guard let copy = self.copyTextView.text else { return }
+        guard let date = self.writingDate else { return }
+        switch self.editMode{
+        case let .edit(_, writing):
+            let writing = Writing(uuidString: writing.uuidString,
+                                  original: original,
+                                  copy: copy,
+                                  date: date)
+            NotificationCenter.default.post(name: NSNotification.Name("edit"),
+                                            object: writing,
+                                            userInfo: nil)
+        default :
+            break
+        }
+            self.navigationController?.popViewController(animated: true)
+        self.memorizeStop()
+        }
     
     
 
@@ -513,17 +535,8 @@ class WritingViewController: UIViewController{
             )
          self.navigationController?.popToRootViewController(animated: true)
             
-        case let .edit(indexPath, writing):
-            let writing = Writing(uuidString: writing.uuidString,
-                                  original: original,
-                                  copy: copy,
-                                  date: date
-            )
-            NotificationCenter.default.post(name: NSNotification.Name("edit"),
-                                            object: writing,
-                                            userInfo: nil
-            )
-            self.navigationController?.popViewController(animated: true)
+        default:
+            break
                                             }
                                             
         self.memorizeStop()
@@ -535,8 +548,7 @@ class WritingViewController: UIViewController{
         guard let copy = self.copyTextView.text else { return }
         guard let date = self.writingDate else { return }
         
-        switch self.editMode{
-        case .new:
+      
             let writing = Writing(uuidString: UUID().uuidString,
                                   original: original,
                                   copy: copy,
@@ -546,28 +558,13 @@ class WritingViewController: UIViewController{
                                             userInfo: nil
             )
          self.navigationController?.popToRootViewController(animated: true)
-            
-        case let .edit(indexPath, writing):
-            let writing = Writing(uuidString: writing.uuidString,
-                                  original: original,
-                                  copy: copy,
-                                  date: date
-            )
-            NotificationCenter.default.post(name: NSNotification.Name("edit"),
-                                            object: writing,
-                                            userInfo: nil
-            )
-            self.navigationController?.popViewController(animated: true)
-                                            }
-                                            
         self.memorizeStop()
-      
-        
-        
-      
+
     }
-    @IBAction func editDoneButtonTapped(_ sender: UIBarButtonItem) {
-    }
+    
+    
+ //   @IBAction func editDoneButtonTapped(_ sender: UIBarButtonItem) {
+ //   }
     
 }
 

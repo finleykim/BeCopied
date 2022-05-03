@@ -8,6 +8,8 @@
 import Foundation
 
 struct Writing{
+    var uuidString : String
     var original : String
     var copy : String
+    var date : Date
 }

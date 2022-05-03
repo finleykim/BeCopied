@@ -4,7 +4,6 @@
 //
 //  Created by Finley on 2022/04/28.
 //
-
 import UIKit
 import Alamofire
 import AudioToolbox
@@ -61,6 +60,8 @@ class WritingViewController: UIViewController{
     var copyCurrentSeconds = 0
     weak var delegate: WritingViewDelegate?
     var editMode : EditMode = .new
+    private var writingDate: Date?
+    private var datePicker = UIDatePicker()
     
     
     
@@ -83,7 +84,7 @@ class WritingViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        
+       
         //APIData Call
         self.collectionSelectedConfiguration()
         //ObjectStyle
@@ -91,21 +92,23 @@ class WritingViewController: UIViewController{
         //Object AlphaValue Defaults
         [memorizeDatePicker, startButton].forEach{ $0?.alpha = 1 }
         [memorizeCountDownLabel, memorizeProgressView, originalTextView, copyProgressView, copyCountDownLabel, copyTextView, selfFinishButton, finishButton].forEach{ $0.alpha = 0 }
+        self.editDoneButton.customView?.alpha = 0
         
         //func Call
         self.configureEditMode()
-     
-        
         
         //barbutton Style
-        navigationItem.backBarButtonItem?.tintColor = .white
+        navigationController?.navigationBar.backgroundColor = .clear
         self.editDoneButton.customView?.alpha = 0
+        self.writingDate = datePicker.date
+        //self.copyTextView.delegate = self
 
     }
     
 
 
     
+  
     
     //touchesBegan
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -120,7 +123,9 @@ class WritingViewController: UIViewController{
         case let .edit(_, writing):
             self.copyTextView.text = writing.copy
             self.originalTextView.text = writing.original
+            self.writingDate = writing.date
             self.editDoneButton.customView?.alpha = 1
+            [memorizeDatePicker, startButton, memorizeCountDownLabel, memorizeProgressView, copyProgressView, copyCountDownLabel, selfFinishButton, finishButton].forEach{ $0.alpha = 0 }
         default:
             break
         }
@@ -451,8 +456,6 @@ class WritingViewController: UIViewController{
                 })
         }
 
-
-
     
     
     
@@ -494,27 +497,72 @@ class WritingViewController: UIViewController{
         
     }
     @IBAction func selfFinishButtonTapped(_ sender: UIButton) {
-        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ViewController") as? ViewController else { return }
         guard let original = self.originalTextView.text else { return }
         guard let copy = self.copyTextView.text else { return }
-        let writing = Writing(original: original, copy: copy)
-        self.delegate?.didSelectReigster(writing: writing)
+        guard let date = self.writingDate else { return }
         
+        switch self.editMode{
+        case .new:
+            let writing = Writing(uuidString: UUID().uuidString,
+                                  original: original,
+                                  copy: copy,
+                                  date: date)
+            NotificationCenter.default.post(name: NSNotification.Name("new"),
+                                            object: writing,
+                                            userInfo: nil
+            )
+         self.navigationController?.popToRootViewController(animated: true)
+            
+        case let .edit(indexPath, writing):
+            let writing = Writing(uuidString: writing.uuidString,
+                                  original: original,
+                                  copy: copy,
+                                  date: date
+            )
+            NotificationCenter.default.post(name: NSNotification.Name("edit"),
+                                            object: writing,
+                                            userInfo: nil
+            )
+            self.navigationController?.popViewController(animated: true)
+                                            }
+                                            
         self.memorizeStop()
+      
         
-        
-        
-        navigationController?.pushViewController(viewController, animated: true)
-        
-       
     }
     @IBAction func finishButtonTapped(_ sender: Any) {
-        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ViewController") as? ViewController else { return }
         guard let original = self.originalTextView.text else { return }
         guard let copy = self.copyTextView.text else { return }
-        let writing = Writing(original: original, copy: copy)
-        self.delegate?.didSelectReigster(writing: writing)
-        navigationController?.pushViewController(viewController, animated: true)
+        guard let date = self.writingDate else { return }
+        
+        switch self.editMode{
+        case .new:
+            let writing = Writing(uuidString: UUID().uuidString,
+                                  original: original,
+                                  copy: copy,
+                                  date: date)
+            NotificationCenter.default.post(name: NSNotification.Name("new"),
+                                            object: writing,
+                                            userInfo: nil
+            )
+         self.navigationController?.popToRootViewController(animated: true)
+            
+        case let .edit(indexPath, writing):
+            let writing = Writing(uuidString: writing.uuidString,
+                                  original: original,
+                                  copy: copy,
+                                  date: date
+            )
+            NotificationCenter.default.post(name: NSNotification.Name("edit"),
+                                            object: writing,
+                                            userInfo: nil
+            )
+            self.navigationController?.popViewController(animated: true)
+                                            }
+                                            
+        self.memorizeStop()
+      
+        
         
       
     }

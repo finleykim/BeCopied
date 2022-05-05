@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "button01.png",
+      "filename" : "TechCrunchButton.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "TechCrunchButton2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "TechCrunchButton3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

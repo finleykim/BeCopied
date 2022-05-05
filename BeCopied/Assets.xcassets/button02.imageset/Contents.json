@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "button02.png",
+      "filename" : "AppleButton.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "AppleButton@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "AppleButton@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "button03.png",
+      "filename" : "WallStreetJournalButton.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "WallStreetJournalButton@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "WallStreetJournalButton@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

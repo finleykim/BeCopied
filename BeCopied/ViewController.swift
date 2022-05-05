@@ -5,24 +5,26 @@ import Alamofire
 
 class ViewController: UIViewController{
 
-    
-    var List = [Writing]()
-    var writingViewController = WritingViewController()
-    
-
-    
-
-    @IBOutlet weak var CountLabel: UILabel!
-    @IBOutlet weak var collections: UICollectionView!
-    
-    
-    
     //선언부
     private var writingList = [Writing](){
         didSet{
             self.saveWritingList()
         }
     }
+    var List = [Writing]()
+    var writingViewController = WritingViewController()
+    let backgroundView = UIView()
+    
+
+    
+
+  
+    @IBOutlet weak var CountLabel: UILabel!
+    @IBOutlet weak var collections: UICollectionView!
+    
+    
+    
+
     
     
     
@@ -33,9 +35,13 @@ class ViewController: UIViewController{
         self.collectionViewDelegate()
         self.registerNib()
         self.loadWritingList()
+        self.backgroundGradient()
+        self.CountLabel.text = String(writingList.count)
+        
         
         //style
         collections.backgroundColor = .clear
+
         
         //NotificationCenter
         NotificationCenter.default.addObserver(self, selector: #selector(newNotification(_:)), name: NSNotification.Name("new"), object: nil)
@@ -70,6 +76,16 @@ class ViewController: UIViewController{
     }
     
 
+    //Background Gradient
+    func backgroundGradient(){
+            let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.colors = [UIColor(red: 38/255, green: 38/255, blue: 103/255, alpha: 1).cgColor, UIColor(red: 134/255, green: 134/255, blue: 186/255, alpha: 1).cgColor]
+            gradient.locations = [0.0 , 1.0]
+            gradient.startPoint = CGPoint(x: 0, y: 1)
+            gradient.endPoint = CGPoint(x: 0, y: 0)
+            gradient.frame = CGRect(x: 0.0, y: 0.0, width: self.view.frame.size.width, height: self.view.frame.size.height)
+            self.view.layer.insertSublayer(gradient, at: 0)
+    }
     
     private func saveWritingList(){
         let date = self.writingList.map {
@@ -166,3 +182,5 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
         self.navigationController?.pushViewController(detailViewController, animated: true)
     }
 }
+
+

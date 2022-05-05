@@ -12,6 +12,8 @@ class CollectionSelectViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        backgroundGradient()
+        navigationController?.navigationBar.isHidden = true
     }
     
     
@@ -51,7 +53,16 @@ class CollectionSelectViewController: UIViewController{
     }
     
     
-    
+    //Background Gradient
+    func backgroundGradient(){
+            let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.colors = [UIColor(red: 38/255, green: 38/255, blue: 103/255, alpha: 1).cgColor, UIColor(red: 134/255, green: 134/255, blue: 186/255, alpha: 1).cgColor]
+            gradient.locations = [0.0 , 1.0]
+            gradient.startPoint = CGPoint(x: 0, y: 1)
+            gradient.endPoint = CGPoint(x: 0, y: 0)
+            gradient.frame = CGRect(x: 0.0, y: 0.0, width: self.view.frame.size.width, height: self.view.frame.size.height)
+            self.view.layer.insertSublayer(gradient, at: 0)
+    }
     
     
     

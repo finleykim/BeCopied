@@ -89,11 +89,14 @@ class WritingViewController: UIViewController{
         //APIData Call
         self.collectionSelectedConfiguration()
         self.configureView()
-
         self.writingDate = datePicker.date
         
+        //Setup Label
+        self.originalTextView.layer.cornerRadius = 30
+        self.copyTextView.layer.cornerRadius = 30
         
-        
+        //style
+        self.backgroundGradient()
     }
     
 
@@ -129,10 +132,22 @@ class WritingViewController: UIViewController{
             self.editDoneButton?.title = "Done"
             self.editDoneButton?.tintColor = .white
             navigationItem.rightBarButtonItem = self.editDoneButton
+            navigationController?.navigationBar.isHidden = true
 
         }
         
 
+    }
+    
+    //Background Gradient
+    func backgroundGradient(){
+            let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.colors = [UIColor(red: 38/255, green: 38/255, blue: 103/255, alpha: 1).cgColor, UIColor(red: 134/255, green: 134/255, blue: 186/255, alpha: 1).cgColor]
+            gradient.locations = [0.0 , 1.0]
+            gradient.startPoint = CGPoint(x: 0, y: 1)
+            gradient.endPoint = CGPoint(x: 0, y: 0)
+            gradient.frame = CGRect(x: 0.0, y: 0.0, width: self.view.frame.size.width, height: self.view.frame.size.height)
+            self.view.layer.insertSublayer(gradient, at: 0)
     }
     
     @objc func tapEditDoneButton(){
@@ -200,7 +215,7 @@ class WritingViewController: UIViewController{
                 self.copyCountDownLabel.text = String(format: "%02d:%02d:%02d", hour, minutes, seconds)
                 self.copyProgressView.progress = Float(self.copyCurrentSeconds) / Float(self.duration)
                 if self.copyCurrentSeconds <= 0{
-                    self.memorizeStop()
+                    self.copyTimerDone()
                     AudioServicesPlaySystemSound(1005)
 
                     
@@ -230,14 +245,29 @@ class WritingViewController: UIViewController{
             self.copyProgressView.alpha = 1
             
         })
-        self.startButton.isSelected = false
+        //self.startButton.isSelected = false
         self.timer?.cancel()
         self.timer = nil
         
     }
     
-
-
+    private func copyTimerDone(){
+        self.timerStatus = .end
+        UIView.animate(withDuration: 0.5, animations: {
+            self.memorizeCountDownLabel.alpha = 0
+            self.memorizeProgressView.alpha = 0
+            self.memorizeDatePicker.alpha = 0
+            self.originalTextView.alpha = 0
+            self.startButton.alpha = 0
+            self.copyCountDownLabel.alpha = 0
+            self.selfFinishButton.alpha = 0
+            self.copyTextView.alpha = 1
+            self.finishButton.alpha = 1
+            self.copyProgressView.alpha = 0
+        })
+        self.timer?.cancel()
+        self.timer = nil
+    }
     
     
   //configuration - LabelText
@@ -497,18 +527,18 @@ class WritingViewController: UIViewController{
                 self.originalTextView.alpha = 1
                 self.startButton.setImage(UIImage(named:"pauseButton"), for: .normal)
             })
-            self.startButton.isSelected = true
+            //self.startButton.isSelected = true
             self.startMemorizeTimer()
             
         case .start:
             self.timerStatus = .pause
-            self.startButton.isSelected = false
+            //self.startButton.isSelected = false
             self.originalTextView.alpha = 0
-            self.startButton.setImage(UIImage(named:"startButton"), for: .normal)
+            self.startButton.setImage(UIImage(named:"StartButton"), for: .normal)
             self.timer?.suspend()
         case .pause:
             self.timerStatus = .start
-            self.startButton.isSelected = true
+            //self.startButton.isSelected = true
             self.originalTextView.alpha = 1
             self.timer?.resume()
             self.startButton.setImage(UIImage(named:"pauseButton"), for: .normal)
@@ -562,6 +592,12 @@ class WritingViewController: UIViewController{
 
     }
     
+    @IBAction func temporaryButtonTapped(_ sender: Any) {
+        self.memorizeStop()
+        AudioServicesPlaySystemSound(1005)
+        self.startCopyTimer()
+        
+    }
     
  //   @IBAction func editDoneButtonTapped(_ sender: UIBarButtonItem) {
  //   }

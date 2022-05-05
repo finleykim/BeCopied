@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "DoneButton.png",
+      "filename" : "Separator.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "Separator@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "Separator@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

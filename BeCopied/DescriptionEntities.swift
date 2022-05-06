@@ -23,6 +23,15 @@ struct WallStreetJournal: Codable{
 }
 struct WallStreetJournalDescription: Codable{
     var description: String
+        var Description: String{
+            let remove = description.components(separatedBy: ".")
+            let removes = remove.map{
+                $0.replacingOccurrences(of: "<ol>", with: "")
+                    .replacingOccurrences(of: "<li>", with: "")
+                    .replacingOccurrences(of: "</li>", with: "")
+            }
+            return removes.joined()
+        }
 }
 
 

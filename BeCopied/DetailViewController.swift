@@ -35,8 +35,8 @@ class DetailViewController: UIViewController{
         guard let writing = self.writing else { return }
         
         //SetUp Label(originalLabel, copyLabel)
-        self.originalTextView.text = writing.original
-        self.copyTextView.text = writing.copy
+        self.originalTextView.text = "\n\(writing.original)"
+        self.copyTextView.text = "\n\(writing.copy)"
         [originalTextView, copyTextView].forEach{
             $0?.clipsToBounds = true
             $0?.layer.shadowColor = UIColor.black.cgColor

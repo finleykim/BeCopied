@@ -226,8 +226,7 @@ class WritingViewController: UIViewController{
                 if self.copyCurrentSeconds <= 0{
                     self.copyTimerDone()
                     AudioServicesPlaySystemSound(1005)
-                    self.copyTextView.isEditable = false
-
+                    self.copyTextView.isEditable = true
                     
 
                 }
@@ -365,7 +364,7 @@ class WritingViewController: UIViewController{
     
     private func wallStreetJournalCrunchconfiguration(wallStreetJournalDescriptions: WallStreetJournal){
         if let random = wallStreetJournalDescriptions.articles.randomElement(){
-            self.originalTextView.text = "\n\(random.description)"
+            self.originalTextView.text = "\n\(random.Description)"
         }
     }
     

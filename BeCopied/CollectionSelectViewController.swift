@@ -9,6 +9,11 @@ import UIKit
 
 class CollectionSelectViewController: UIViewController{
     
+    @IBOutlet weak var techCrunchButton: UIButton!
+    @IBOutlet weak var appleButton: UIButton!
+    @IBOutlet weak var wallStreetJournalButton: UIButton!
+    @IBOutlet weak var topBusinessButton: UIButton!
+    @IBOutlet weak var teslaButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,7 +22,13 @@ class CollectionSelectViewController: UIViewController{
     }
     
     
-    
+    private func buttonConfiguration(){
+        [techCrunchButton,appleButton,wallStreetJournalButton,topBusinessButton,teslaButton].forEach{
+            $0?.layer.shadowColor = UIColor.black.cgColor
+            $0?.layer.shadowOpacity = 0.3
+            $0?.layer.shadowRadius = 10
+        }
+    }
     
     
     //ActionMethod

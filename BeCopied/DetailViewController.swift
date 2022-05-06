@@ -11,8 +11,10 @@ class DetailViewController: UIViewController{
 
     
     
-    @IBOutlet weak var originalLabel: UILabel!
-    @IBOutlet weak var copyLabel: UILabel!
+    @IBOutlet weak var originalTextView: UITextView!
+    @IBOutlet weak var copyTextView: UITextView!
+    
+    
     var editButton: UIBarButtonItem?
     var deleteButton: UIBarButtonItem?
     
@@ -33,11 +35,16 @@ class DetailViewController: UIViewController{
         guard let writing = self.writing else { return }
         
         //SetUp Label(originalLabel, copyLabel)
-        self.originalLabel.text = writing.original
-        self.originalLabel.layer.cornerRadius = 30
-        
-        self.copyLabel.text = writing.copy
-        self.copyLabel.layer.cornerRadius = 30
+        self.originalTextView.text = writing.original
+        self.copyTextView.text = writing.copy
+        [originalTextView, copyTextView].forEach{
+            $0?.clipsToBounds = true
+            $0?.layer.shadowColor = UIColor.black.cgColor
+            $0?.layer.shadowOpacity = 0.3
+            $0?.layer.shadowRadius = 10
+            $0?.layer.cornerRadius = 30
+            $0?.isEditable = false
+        }
         
         //SetUp Button (Edit, Delete)
         self.editButton = UIBarButtonItem(image: nil, style: .plain, target: self, action: #selector(editButtonTapped))
@@ -50,10 +57,8 @@ class DetailViewController: UIViewController{
         self.deleteButton?.title = "Delete"
         self.navigationItem.leftBarButtonItem = self.deleteButton
         
-        
-        
+
     }
-    
     
     //Background Gradient
     func backgroundGradient(){

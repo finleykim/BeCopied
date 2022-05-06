@@ -97,6 +97,15 @@ class WritingViewController: UIViewController{
         
         //style
         self.backgroundGradient()
+        
+        //shadowStyle
+        [originalTextView,copyTextView].forEach{
+            $0?.layer.shadowColor = UIColor.black.cgColor
+            $0?.layer.shadowOpacity = 0.3
+            $0?.layer.shadowRadius = 10
+            
+            self.originalTextView.isEditable = false
+        }
     }
     
 
@@ -191,7 +200,7 @@ class WritingViewController: UIViewController{
                     self.memorizeStop()
                     AudioServicesPlaySystemSound(1005)
                     self.startCopyTimer()
-
+                    
                     
 
                 }
@@ -217,6 +226,7 @@ class WritingViewController: UIViewController{
                 if self.copyCurrentSeconds <= 0{
                     self.copyTimerDone()
                     AudioServicesPlaySystemSound(1005)
+                    self.copyTextView.isEditable = false
 
                     
 
@@ -343,31 +353,31 @@ class WritingViewController: UIViewController{
     
     private func techCrunchconfiguration(techCrunchDescriptions: TechCrunch){
         if let random = techCrunchDescriptions.articles.randomElement(){
-            self.originalTextView.text = random.description
+            self.originalTextView.text = "\n\(random.description)"
         }
     }
 
     private func appleconfiguration(appleCrunchDescriptions: Apple){
         if let random = appleCrunchDescriptions.articles.randomElement(){
-            self.originalTextView.text = random.description
+            self.originalTextView.text = "\n\(random.description)"
         }
     }
     
     private func wallStreetJournalCrunchconfiguration(wallStreetJournalDescriptions: WallStreetJournal){
         if let random = wallStreetJournalDescriptions.articles.randomElement(){
-            self.originalTextView.text = random.description
+            self.originalTextView.text = "\n\(random.description)"
         }
     }
     
     private func businessInUSconfiguration(businessInUSDescriptions: BusinessInUS){
         if let random = businessInUSDescriptions.articles.randomElement(){
-            self.originalTextView.text = random.description
+            self.originalTextView.text = "\n\(random.description)"
         }
     }
     
     private func teslaconfiguration(teslaDescriptions: Tesla){
         if let random = teslaDescriptions.articles.randomElement(){
-            self.originalTextView.text = random.description
+            self.originalTextView.text = "\n\(random.description)"
         }
     }
     
@@ -388,7 +398,7 @@ class WritingViewController: UIViewController{
         
         //TechCrunch
         func fetchTechCrunch(completionHandler: @escaping (Result<TechCrunch, Error>) -> Void){
-            let url = "https://newsapi.org/v2/top-headline"
+            let url = "https://newsapi.org/v2/top-headlines"
             let param = [
                 "apiKey":"16507df6dd0a44f3b844085c284e32a8",
                 "sources":"techcrunch"
@@ -416,7 +426,11 @@ class WritingViewController: UIViewController{
             let url = "https://newsapi.org/v2/everything"
             let param = [
                 "q":"apple",
+                "from":"2022-04-10",
+                "to":"2022-05-05",
+                "sortBy":"popularity",
                 "apiKey":"16507df6dd0a44f3b844085c284e32a8"
+                
             ]
             AF.request(url, method: .get, parameters: param)
                 .responseData(completionHandler: { response in

@@ -92,8 +92,13 @@ class WritingViewController: UIViewController{
         self.writingDate = datePicker.date
         
         //Setup Label
-        self.originalTextView.layer.cornerRadius = 30
-        self.copyTextView.layer.cornerRadius = 30
+        
+        [originalTextView,copyTextView].forEach{
+            $0?.layer.cornerRadius = 30
+            $0?.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        }
+
+        
         
         //style
         self.backgroundGradient()
@@ -141,7 +146,7 @@ class WritingViewController: UIViewController{
             self.editDoneButton?.title = "Done"
             self.editDoneButton?.tintColor = .white
             navigationItem.rightBarButtonItem = self.editDoneButton
-            navigationController?.navigationBar.isHidden = true
+            navigationController?.navigationBar.isHidden = false
 
         }
         
@@ -352,31 +357,31 @@ class WritingViewController: UIViewController{
     
     private func techCrunchconfiguration(techCrunchDescriptions: TechCrunch){
         if let random = techCrunchDescriptions.articles.randomElement(){
-            self.originalTextView.text = "\n\(random.description)"
+            self.originalTextView.text = "\(random.description)"
         }
     }
 
     private func appleconfiguration(appleCrunchDescriptions: Apple){
         if let random = appleCrunchDescriptions.articles.randomElement(){
-            self.originalTextView.text = "\n\(random.description)"
+            self.originalTextView.text = "\(random.description)"
         }
     }
     
     private func wallStreetJournalCrunchconfiguration(wallStreetJournalDescriptions: WallStreetJournal){
         if let random = wallStreetJournalDescriptions.articles.randomElement(){
-            self.originalTextView.text = "\n\(random.Description)"
+            self.originalTextView.text = "\(random.Description)"
         }
     }
     
     private func businessInUSconfiguration(businessInUSDescriptions: BusinessInUS){
         if let random = businessInUSDescriptions.articles.randomElement(){
-            self.originalTextView.text = "\n\(random.description)"
+            self.originalTextView.text = "\(random.description)"
         }
     }
     
     private func teslaconfiguration(teslaDescriptions: Tesla){
         if let random = teslaDescriptions.articles.randomElement(){
-            self.originalTextView.text = "\n\(random.description)"
+            self.originalTextView.text = "\(random.description)"
         }
     }
     

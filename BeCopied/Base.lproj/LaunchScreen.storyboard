@@ -10,36 +10,22 @@
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
             <objects>
-                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                <viewController wantsFullScreenLayout="YES" id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="eza-0d-VtI">
-                                <rect key="frame" x="40" y="373.5" width="334" height="149"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Symbol" translatesAutoresizingMaskIntoConstraints="NO" id="Oir-1w-tny">
-                                <rect key="frame" x="120" y="395.5" width="64" height="95"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="95" id="EqM-KE-6sm"/>
-                                    <constraint firstAttribute="width" constant="64" id="PL8-v3-Uwv"/>
-                                </constraints>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CI" translatesAutoresizingMaskIntoConstraints="NO" id="iQ7-pi-W6h">
+                                <rect key="frame" x="110" y="421" width="194" height="54"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.1960784314" green="0.1960784314" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Oir-1w-tny" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-5" id="6IL-VL-nGc"/>
-                            <constraint firstItem="Oir-1w-tny" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" constant="-55" id="CWP-m7-Flu"/>
-                            <constraint firstItem="eza-0d-VtI" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Ivs-I2-kdp"/>
-                            <constraint firstItem="eza-0d-VtI" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="UHP-ke-lLU"/>
-                            <constraint firstItem="eza-0d-VtI" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="40" id="qFm-yQ-Sul"/>
-                            <constraint firstAttribute="trailing" secondItem="eza-0d-VtI" secondAttribute="trailing" constant="40" id="wFs-PJ-dfe"/>
+                            <constraint firstItem="iQ7-pi-W6h" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="WpR-sJ-6d5"/>
+                            <constraint firstItem="iQ7-pi-W6h" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="cFS-7M-clW"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="symbol" destination="Oir-1w-tny" id="Rhx-6h-PUh"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -47,7 +33,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Symbol" width="124" height="168"/>
-        <image name="logo" width="612" height="149"/>
+        <image name="CI" width="194" height="54"/>
     </resources>
 </document>

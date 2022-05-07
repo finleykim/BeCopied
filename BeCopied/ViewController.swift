@@ -58,6 +58,7 @@ class ViewController: UIViewController{
             $0.date.compare($1.date) == .orderedDescending
         })
         self.collections.reloadData()
+        self.CountLabel.text = String(writingList.count)
     }
     @objc func editNotification(_ notification: Notification){
         guard let writing = notification.object as? Writing else { return }
@@ -73,6 +74,7 @@ class ViewController: UIViewController{
         guard let index = self.writingList.firstIndex(where: { $0.uuidString == uuidString }) else { return }
         self.writingList.remove(at: index)
         self.collections.deleteItems(at: [IndexPath(row: index, section: 0)])
+        self.CountLabel.text = String(writingList.count)
     }
     
 

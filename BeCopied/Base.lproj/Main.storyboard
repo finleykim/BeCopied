@@ -208,18 +208,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="BOc-Od-MgA">
-                                <rect key="frame" x="20" y="50" width="374" height="796"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="BOc-Od-MgA">
+                                <rect key="frame" x="20" y="100" width="374" height="746"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="v6o-2b-pgm">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="398"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="363"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6ou-D7-Cee">
-                                        <rect key="frame" x="0.0" y="398" width="374" height="398"/>
+                                        <rect key="frame" x="0.0" y="383" width="374" height="363"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -294,7 +294,7 @@
                             <constraint firstItem="27W-Fp-q5S" firstAttribute="top" secondItem="Cd8-b0-NQS" secondAttribute="bottom" constant="15" id="MD2-vG-5Ja"/>
                             <constraint firstItem="BeQ-l0-SEa" firstAttribute="centerX" secondItem="ZYy-a6-0MG" secondAttribute="centerX" id="Mv2-hP-NA4"/>
                             <constraint firstItem="bul-Au-6q5" firstAttribute="bottom" secondItem="bJo-qT-8OP" secondAttribute="bottom" constant="20" id="OSb-2u-ZcK"/>
-                            <constraint firstItem="BOc-Od-MgA" firstAttribute="top" secondItem="ZYy-a6-0MG" secondAttribute="top" constant="50" id="Pa6-gQ-9uT"/>
+                            <constraint firstItem="BOc-Od-MgA" firstAttribute="top" secondItem="ZYy-a6-0MG" secondAttribute="top" constant="100" id="Pa6-gQ-9uT"/>
                             <constraint firstItem="Cd8-b0-NQS" firstAttribute="centerX" secondItem="ZYy-a6-0MG" secondAttribute="centerX" id="RMC-iU-lAK"/>
                             <constraint firstItem="27W-Fp-q5S" firstAttribute="centerY" secondItem="bul-Au-6q5" secondAttribute="centerY" constant="-86" id="VrY-xw-9KO"/>
                             <constraint firstItem="bul-Au-6q5" firstAttribute="trailing" secondItem="bJo-qT-8OP" secondAttribute="trailing" constant="20" id="Xp4-ss-0FF"/>

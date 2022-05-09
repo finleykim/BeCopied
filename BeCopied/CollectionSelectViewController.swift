@@ -18,9 +18,15 @@ class CollectionSelectViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         backgroundGradient()
-        navigationController?.navigationBar.isHidden = true
+        navigationBackSwipeMotion()
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem()
+        
+        
     }
     
+    private func navigationBackSwipeMotion() {
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
+    }
     
     private func buttonConfiguration(){
         [techCrunchButton,appleButton,wallStreetJournalButton,topBusinessButton,teslaButton].forEach{

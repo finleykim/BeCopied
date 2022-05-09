@@ -86,15 +86,19 @@ class WritingViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationBackSwipeMotion()
+        navigationItem.leftBarButtonItem = UIBarButtonItem()
+        
         //APIData Call
         self.collectionSelectedConfiguration()
         self.configureView()
         self.writingDate = datePicker.date
+        self.navigationItem.backBarButtonItem?.tintColor = .white
         
         //Setup Label
-        
         [originalTextView,copyTextView].forEach{
-            $0?.layer.cornerRadius = 30
+            $0?.layer.cornerRadius = 15
             $0?.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         }
 
@@ -121,8 +125,10 @@ class WritingViewController: UIViewController{
     }
     
     
-
-
+    
+    func navigationBackSwipeMotion() {
+            self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
+        }
     
     //configureView
     private func configureView(){
@@ -610,15 +616,15 @@ class WritingViewController: UIViewController{
 
     }
     
-    @IBAction func temporaryButtonTapped(_ sender: Any) {
-        self.memorizeStop()
-        AudioServicesPlaySystemSound(1005)
-        self.startCopyTimer()
-        
-    }
+//개발자용 타임워프버튼
+//    @IBAction func temporaryButtonTapped(_ sender: Any) {
+//        self.memorizeStop()
+//        AudioServicesPlaySystemSound(1005)
+//        self.startCopyTimer()
+//
+//    }
     
- //   @IBAction func editDoneButtonTapped(_ sender: UIBarButtonItem) {
- //   }
+
     
 }
 

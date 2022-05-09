@@ -15,7 +15,7 @@ class DetailViewController: UIViewController{
     @IBOutlet weak var copyTextView: UITextView!
     
     
-    var editButton: UIBarButtonItem?
+    var rightBarButton: UIBarButtonItem?
     var deleteButton: UIBarButtonItem?
     
     var writing: Writing?
@@ -27,9 +27,13 @@ class DetailViewController: UIViewController{
         super.viewDidLoad()
         self.configureView()
         self.backgroundGradient()
+        self.navigationBackSwipeMotion()
+        
     }
     
-
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     
     private func configureView(){
         guard let writing = self.writing else { return }
@@ -42,22 +46,27 @@ class DetailViewController: UIViewController{
             $0?.layer.shadowColor = UIColor.black.cgColor
             $0?.layer.shadowOpacity = 0.3
             $0?.layer.shadowRadius = 10
-            $0?.layer.cornerRadius = 30
+            $0?.layer.cornerRadius = 15
             $0?.isEditable = false
         }
         
         //SetUp Button (Edit, Delete)
-        self.editButton = UIBarButtonItem(image: nil, style: .plain, target: self, action: #selector(editButtonTapped))
-        self.editButton?.tintColor = .white
-        self.editButton?.title = "Edit"
-        self.navigationItem.rightBarButtonItem = self.editButton
-        
-        self.deleteButton = UIBarButtonItem(image: nil, style: .plain, target: self, action: #selector(deleteButtonTapped))
-        self.deleteButton?.tintColor = .systemRed
-        self.deleteButton?.title = "Delete"
-        self.navigationItem.leftBarButtonItem = self.deleteButton
+        self.rightBarButton = UIBarButtonItem(image: UIImage(systemName: "ellipsis"),
+                                          style: .plain,
+                                          target: self,
+                                          action: #selector(rightButtonTapped))
+        self.rightBarButton?.tintColor = .white
+
+        self.navigationItem.rightBarButtonItem = self.rightBarButton
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem()
         
 
+
+        
+
+    }
+    func navigationBackSwipeMotion() {
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
     }
     
     //Background Gradient
@@ -73,7 +82,27 @@ class DetailViewController: UIViewController{
     
     //objc (EditButton, DeleteButton Action)
     
-    @objc func editButtonTapped(){
+    @objc func rightButtonTapped(){
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let editButton = UIAlertAction(title: "Edit", style: .default, handler: editButtonTapped)
+        let deleteButton = UIAlertAction(title: "delete", style: .destructive, handler: deleteButtonTapped)
+        
+        actionSheet.addAction(editButton)
+        actionSheet.addAction(deleteButton)
+        
+        self.present(actionSheet,animated: true){
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissAlertController))
+            actionSheet.view.superview?.subviews[0].addGestureRecognizer(tapGesture)
+        }
+    }
+    
+    @objc func dismissAlertController(){
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func editButtonTapped(_ action: UIAlertAction){
+        
+        
         guard let viewController = self.storyboard?.instantiateViewController(identifier: "WritingViewController") as? WritingViewController else { return }
         guard let indexPath = self.indexPath else { return }
         guard let writing = self.writing else { return }
@@ -93,7 +122,7 @@ class DetailViewController: UIViewController{
         self.configureView()
     }
     
-    @objc func deleteButtonTapped(){
+  func deleteButtonTapped(_ action: UIAlertAction){
         guard let uuidString = self.writing?.uuidString else { return }
         NotificationCenter.default.post(
           name: NSNotification.Name("delete"),
@@ -111,3 +140,5 @@ class DetailViewController: UIViewController{
 
     
 }
+
+
